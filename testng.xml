@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/Users/jonathantracey/DockerTask/DockerTask/src/test/java/com/Selenium">
+        <classes>
+            <class name="com.Selenium.AppTest">
+                <methods>
+                    <include name="testLogin"/>
+                    <include name="testLogin2"/>
+                </methods>
+            </class>
+            <class name="com.Selenium.TC_Login">
+                <methods>
+                    <include name="login_test"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
