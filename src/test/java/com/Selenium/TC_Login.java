@@ -8,23 +8,24 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
-public class TC_Login {
+public class TC_Login extends GridTest{
+
+    By username = By.name("username");
+    By password = By.name("password");
+    By login = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button");
 
     @Test
-    public void login_test()
-    {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        //driver.manage().window().maximize();
+    public void login_test() throws InterruptedException {
 
-        //driver.get("https://opensource-demo.orangehrmlive.com/");
+        getDriver().findElement(username).sendKeys("Admin");
+        getDriver().findElement(password).sendKeys("admin123");
 
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        getDriver().findElement(login).click();
 
-        driver.findElement(By.name("username")).sendKeys("Admin");
-        driver.findElement(By.name("password")).sendKeys("admin123");
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")).click();
+        Thread.sleep(20000);
 
-        Assert.assertEquals(driver.getTitle(),"OrangeHRM");
+        getDriver().getTitle();
+
+        Assert.assertEquals(getDriver().getTitle(),"OrangeHRM");
     }
 }
